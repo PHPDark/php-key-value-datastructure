@@ -45,4 +45,13 @@ class Core
             return $newArray;
         }
     }
+
+    public function deleteListItem($key)
+    {
+        $keyExists = array_key_exists($key, $this->data);
+        if ($keyExists) {
+            $retrivedKeyValue = $this->get($key);
+            is_array($retrivedKeyValue) ? array_pop($retrivedKeyValue) : false;
+        }
+    }
 }
