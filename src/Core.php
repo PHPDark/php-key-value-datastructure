@@ -77,6 +77,16 @@ class Core
         }
     }
 
+    public function decrement($key, $decrementValue = 0)
+    {
+        $keyExists = array_key_exists($key, $this->data);
+        if ($keyExists) {
+            $this->set($key, $this->get($key) - $decrementValue);
+        } else {
+            $this->set($key, 0 - $decrementValue);
+        }
+    }
+
     public function rpop($key)
     {
         $keyExists = array_key_exists($key, $this->data);
