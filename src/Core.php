@@ -64,4 +64,12 @@ class Core
             return false;
         }
     }
+
+    public function delete($key)
+    {
+        $keyExists = array_key_exists($key, $this->data);
+        if ($keyExists) {
+            unset($this->data[$key]);
+        }
+    }
 }

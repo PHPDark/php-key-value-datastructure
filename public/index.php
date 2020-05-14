@@ -15,8 +15,3 @@ $valueStore2 = $core->set('key2', [
     'name' => 'Pranto',
     'email' => 'pranto@gmail.com'
 ]);
-
-$getValue = $core->get('key1');
-// print_r($getValue);
-$check = $core->exists('key3');
-var_dump($check);
