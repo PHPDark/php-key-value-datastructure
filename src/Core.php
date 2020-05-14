@@ -11,7 +11,7 @@ class Core
         $this->data = array();
     }
 
-    public function set($key, $value)
+    public function set($key, $value = null)
     {
         $this->data[$key] = $value;
     }
@@ -52,6 +52,16 @@ class Core
         if ($keyExists) {
             $retrivedKeyValue = $this->get($key);
             is_array($retrivedKeyValue) ? array_pop($retrivedKeyValue) : false;
+        }
+    }
+
+    public function exists($key)
+    {
+        $keyExists = array_key_exists($key, $this->data);
+        if ($keyExists) {
+            return true;
+        } else {
+            return false;
         }
     }
 }
