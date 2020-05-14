@@ -25,7 +25,28 @@ class Core
         return null;
     }
 
-    public function pushListItem($key, $value)
+    public function lpush($key, $value)
+    {
+        $keyExists = array_key_exists($key, $this->data);
+        if ($keyExists) {
+
+            $retrivedKeyValue = $this->get($key);
+            $result = is_array($retrivedKeyValue) ? array_unshift($retrivedKeyValue, $value) : false;
+
+            if ($result) {
+                $this->set($key, $retrivedKeyValue);
+                return $retrivedKeyValue;
+            }
+
+        } else {
+            $newArray = array();
+            array_push($newArray, $value);
+            $this->set($key, $newArray);
+            return $newArray;
+        }
+    }
+
+    public function rpush($key, $value)
     {
         $keyExists = array_key_exists($key, $this->data);
         if ($keyExists) {
@@ -46,15 +67,7 @@ class Core
         }
     }
 
-    public function deleteListItem($key)
-    {
-        $keyExists = array_key_exists($key, $this->data);
-        if ($keyExists) {
-            $retrivedKeyValue = $this->get($key);
-            is_array($retrivedKeyValue) ? array_pop($retrivedKeyValue) : false;
-        }
-    }
-
+    
     public function exists($key)
     {
         $keyExists = array_key_exists($key, $this->data);
