@@ -73,9 +73,7 @@ class Core
         if ($keyExists) {
             $retrivedKeyValue = $this->get($key);
             is_array($retrivedKeyValue) ? array_pop($retrivedKeyValue) : false;
-        } else {
-            return false;
-        }
+        } 
     }
 
     public function exists($key)
