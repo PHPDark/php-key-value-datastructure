@@ -11,7 +11,7 @@ class Core
         $this->data = array();
     }
 
-    public function set($key, $value = null)
+    public function set($key, $value)
     {
         $this->data[$key] = $value;
     }
@@ -67,13 +67,23 @@ class Core
         }
     }
 
+    public function increment($key, $incrementValue = 1)
+    {
+        $keyExists = array_key_exists($key, $this->data);
+        if ($keyExists) {
+            $this->set($key, $this->get($key) + $incrementValue);
+        } else {
+            $this->set($key, $incrementValue);
+        }
+    }
+
     public function rpop($key)
     {
         $keyExists = array_key_exists($key, $this->data);
         if ($keyExists) {
             $retrivedKeyValue = $this->get($key);
             is_array($retrivedKeyValue) ? array_pop($retrivedKeyValue) : false;
-        } 
+        }
     }
 
     public function exists($key)

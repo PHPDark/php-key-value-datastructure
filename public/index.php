@@ -23,6 +23,7 @@ $core->lpush('key1', [
 $core->rpush('key2', [
     'age' => 21,
 ]);
-
-$get = $core->get('key2');
+$intValue = $core->set('int', 99);
+$core->increment('int');
+$get = $core->get('int');
 print_r($get);
