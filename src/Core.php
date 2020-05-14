@@ -67,7 +67,7 @@ class Core
         }
     }
 
-    public function lpop($key)
+    public function rpop($key)
     {
         $keyExists = array_key_exists($key, $this->data);
         if ($keyExists) {
