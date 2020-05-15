@@ -115,4 +115,17 @@ class Core
             return false;
         }
     }
+
+    public function hset($key, $field, $value)
+    {
+        $this->data[$key][$field] = $value;
+    }
+
+    public function hget($key, $field)
+    {
+        $keyExists = array_key_exists($key, $this->data);
+        if ($keyExists) {
+            return $this->data[$key][$field];
+       }
+    }
 }

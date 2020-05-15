@@ -23,7 +23,13 @@ $core->lpush('key1', [
 $core->rpush('key2', [
     'age' => 21,
 ]);
+
+
 $intValue = $core->set('int', 99);
 $core->increment('int');
 $get = $core->get('int');
+
+$setValye = $core->hset('student', ['name', 'age'], ['faiyaz', 18]);
+$get = $core->hget('student', []);
+
 print_r($get);
