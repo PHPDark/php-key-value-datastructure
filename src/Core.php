@@ -106,8 +106,18 @@ class Core
     public function storeValue($key, $field, $value)
     {
         if ($this->exists($key)) {
-            $this->data[$key][$field] = $value;
+            if (!is_array($field) && !is_array($value)) {
+                $this->data[$key][$field] = $value;
+            } else {
+
+                for ($i = 0; $i < count($field); $i++) {
+                    $this->data[$key][$field[$i]] = $value[$i];
+                }
+            }
+            echo '<pre>';
+            print_r( $this->data); exit;
             return true;
+
         } else {
             return null;
         }

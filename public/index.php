@@ -28,10 +28,20 @@ $core->increment('int');
 $get = $core->get('int');
 
 
+/* example 1*/
+$core->storeValue(
+    'key1',
+    ['address', 'mobile', 'pin', 'interest'],
+    ['Dhaka Bangladesh', ['0165545454', '97987877'], [1223, 324, 324], 'table tenis']
+);
 
-print_r($core->storeValue('key1','address','Dhaka Bangladesh'));
 
-
+/** example 2 */
+$core->storeValue(
+    'key1',
+    ['address', 'mobile', 'pin', 'interest'],
+    ['Dhaka Bangladesh', '0165545454', '9874', ['cricket', 'hockey', 'badminton']]
+);
 /**
  * task1
  * ami amon akta function banate chacchi like dhoren amar function ee 3 ta
