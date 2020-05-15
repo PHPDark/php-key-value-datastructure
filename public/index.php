@@ -30,19 +30,6 @@ $core->increment('int');
 $get = $core->get('int');
 
 
-/* example 1*/
-$core->storeValue(
-    'key1',
-    ['address', 'mobile', 'pin', 'interest'],
-    ['Dhaka Bangladesh', ['0165545454', '97987877'], [1223, 324, 324], 'table tenis']
-);
-
-
-/** example 2 */
-$storeValue = $core->storeValue(
-    'key1',
-    ['address', 'mobile', 'pin', 'interest'],
-    ['Dhaka Bangladesh', '0165545454', '9874', ['cricket', 'hockey', 'badminton']]
-);
-
-print_r($storeValue);
+$storeValue = $core->hmset('student', ['name', 'age', 'roll'], ['faiyaz' , 18, '5']);
+$get = $core->hgetAll('student');
+print_r($get);
