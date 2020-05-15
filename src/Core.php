@@ -96,6 +96,23 @@ class Core
         }
     }
 
+    /**
+     * Store value in an array
+     * @param $key
+     * @param $field
+     * @param $value
+     * @return bool|null
+     */
+    public function storeValue($key, $field, $value)
+    {
+        if ($this->exists($key)) {
+            $this->data[$key][$field] = $value;
+            return true;
+        } else {
+            return null;
+        }
+    }
+
     public function exists($key)
     {
         $keyExists = array_key_exists($key, $this->data);
