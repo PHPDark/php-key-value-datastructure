@@ -127,12 +127,12 @@ class Core
         $keyExists = array_key_exists($key, $this->data);
         if ($keyExists) {
             return $this->data[$key][$field];
-       }
+        }
     }
 
     public function hmset($key, $field, $value)
     {
-        if ($this->exists($key)) {
+        if (!$this->exists($key)) { //if key is not already exist
             if (!is_array($field) && !is_array($value)) {
                 $this->data[$key][$field] = $value;
             } else {
@@ -140,15 +140,19 @@ class Core
                     $this->data[$key][$field[$i]] = $value[$i];
                 }
             }
+        } else { //if key is already exist
+
         }
+
     }
 
     public function hgetAll($key)
     {
         $keyExists = array_key_exists($key, $this->data);
-        if($keyExists){
+
+        if ($keyExists) {
             return $this->data[$key];
-        }else{
+        } else {
             return null;
         }
     }

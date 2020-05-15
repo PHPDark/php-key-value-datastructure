@@ -29,7 +29,7 @@ $intValue = $core->set('int', 99);
 $core->increment('int');
 $get = $core->get('int');
 
-
 $storeValue = $core->hmset('student', ['name', 'age', 'roll'], ['faiyaz' , 18, '5']);
 $get = $core->hgetAll('student');
-print_r($get);
+echo '<pre>';
+print_r( $get); exit;
