@@ -39,30 +39,10 @@ $core->storeValue(
 
 
 /** example 2 */
-$core->storeValue(
+$storeValue = $core->storeValue(
     'key1',
     ['address', 'mobile', 'pin', 'interest'],
     ['Dhaka Bangladesh', '0165545454', '9874', ['cricket', 'hockey', 'badminton']]
 );
-/**
- * task1
- * ami amon akta function banate chacchi like dhoren amar function ee 3 ta
- * parameter thakbe. $key, $field, $value .. so eita akta array hisabe thakbe!
- * so ami ei 3 ta param diye akta array te data store korte chacchi
- *
- *
- * task 2
- * haee then abar arekta method thakbe jeita te get($key, $field)
- * param pass koirlei oi data gulo array te return korbe
- *
- * task 3
- * array er akta akta key thakbe.. oi key diye array access hobee!
- * ar jokhon get method dibo tokhon get($key, $field) argument hisabe jabe.. 2 ta method hobee..
- * set($key, $field, $value)
- * get($key,$field)
- */
 
-$setValye = $core->hset('student', ['name', 'age'], ['faiyaz', 18]);
-$get = $core->hget('student', []);
-
-print_r($get);
+print_r($storeValue);

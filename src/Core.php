@@ -96,32 +96,6 @@ class Core
         }
     }
 
-    /**
-     * Store value in an array
-     * @param $key
-     * @param $field
-     * @param $value
-     * @return bool|null
-     */
-    public function storeValue($key, $field, $value)
-    {
-        if ($this->exists($key)) {
-            if (!is_array($field) && !is_array($value)) {
-                $this->data[$key][$field] = $value;
-            } else {
-
-                for ($i = 0; $i < count($field); $i++) {
-                    $this->data[$key][$field[$i]] = $value[$i];
-                }
-            }
-            echo '<pre>';
-            print_r( $this->data); exit;
-            return true;
-
-        } else {
-            return null;
-        }
-    }
 
     public function exists($key)
     {
@@ -155,4 +129,18 @@ class Core
             return $this->data[$key][$field];
        }
     }
+
+    public function hmset($key, $field, $value)
+    {
+        if ($this->exists($key)) {
+            if (!is_array($field) && !is_array($value)) {
+                $this->data[$key][$field] = $value;
+            } else {
+                for ($i = 0; $i < count($field); $i++) {
+                    $this->data[$key][$field[$i]] = $value[$i];
+                }
+            }
+        }
+    }
+
 }
